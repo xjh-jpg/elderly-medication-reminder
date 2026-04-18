@@ -36,19 +36,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// 路由导入
-const authRoutes = require('./routes/authRoutes');
-const elderRoutes = require('./routes/elderRoutes');
-const medicationRoutes = require('./routes/medicationRoutes');
-const healthRoutes = require('./routes/healthRoutes');
-const adminRoutes = require('./routes/adminRoutes');
-
-// 路由注册
-app.use('/api/auth', authRoutes);
-app.use('/api/elder', elderRoutes);
-app.use('/api/medication', medicationRoutes);
-app.use('/api/health', healthRoutes);
-app.use('/api/admin', adminRoutes);
+// ============================================
+// 路由注册（必须在 404 之前）
+// ============================================
 
 // API 根路径 - 服务信息
 app.get('/', (req, res) => {
@@ -64,8 +54,8 @@ app.get('/', (req, res) => {
 
 // 健康检查端点
 app.get('/health', (req, res) => {
-  res.json({ 
-    status: 'healthy', 
+  res.json({
+    status: 'healthy',
     timestamp: new Date().toISOString(),
     service: 'elder-care-api'
   });
@@ -122,20 +112,38 @@ app.get('/api-docs', (req, res) => {
   });
 });
 
+// 路由导入
+const authRoutes = require('./routes/authRoutes');
+const elderRoutes = require('./routes/elderRoutes');
+const medicationRoutes = require('./routes/medicationRoutes');
+const healthRoutes = require('./routes/healthRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+
+// 业务路由注册
+app.use('/api/auth', authRoutes);
+app.use('/api/elder', elderRoutes);
+app.use('/api/medication', medicationRoutes);
+app.use('/api/health', healthRoutes);
+app.use('/api/admin', adminRoutes);
+
+// ============================================
+// 错误处理（必须在所有路由之后）
+// ============================================
+
 // 错误处理中间件
 app.use((err, req, res, next) => {
   console.error('服务器错误:', err.stack);
-  
+
   if (err.name === 'ValidationError') {
-    return res.status(400).json({ 
-      code: 400, 
-      message: '参数验证失败', 
-      errors: err.errors 
+    return res.status(400).json({
+      code: 400,
+      message: '参数验证失败',
+      errors: err.errors
     });
   }
 
-  res.status(500).json({ 
-    code: 500, 
+  res.status(500).json({
+    code: 500,
     message: '服务器内部错误',
     error: process.env.NODE_ENV === 'development' ? err.message : undefined
   });
@@ -143,9 +151,9 @@ app.use((err, req, res, next) => {
 
 // 404处理
 app.use((req, res) => {
-  res.status(404).json({ 
-    code: 404, 
-    message: '请求的资源不存在' 
+  res.status(404).json({
+    code: 404,
+    message: '请求的资源不存在'
   });
 });
 
@@ -158,12 +166,12 @@ app.listen(PORT, () => {
   服务地址: http://localhost:${PORT}
   健康检查: http://localhost:${PORT}/health
   API文档: http://localhost:${PORT}/api-docs
-  
+
   数据库配置:
   - 主机: ${process.env.DB_HOST}
   - 端口: ${process.env.DB_PORT}
   - 数据库: ${process.env.DB_NAME}
-  
+
   启动时间: ${new Date().toISOString()}
   ============================================
   `);
