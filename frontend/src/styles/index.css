@@ -1,0 +1,352 @@
+/* 银发数字化·智慧养老平台 - 适老化全局样式 */
+
+:root {
+  /* 主色调 - 适合老年人的高对比度蓝色系 */
+  --primary-color: #1a73e8;
+  --primary-light: #4dabf5;
+  --primary-dark: #0050b3;
+  
+  /* 辅助色 */
+  --success-color: #52c41a;
+  --warning-color: #faad14;
+  --danger-color: #ff4d4f;
+  --info-color: #1890ff;
+  
+  /* 背景色 */
+  --bg-color: #f5f7fa;
+  --card-bg: #ffffff;
+  --sidebar-bg: #f0f2f5;
+  
+  /* 文本色 */
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-disabled: #999999;
+  
+  /* 边框色 */
+  --border-color: #d9d9d9;
+  --border-light: #f0f0f0;
+  
+  /* 圆角 */
+  --border-radius: 12px;
+  --border-radius-sm: 8px;
+  
+  /* 阴影 */
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --box-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  
+  /* 字体大小 - 适老化大字体 */
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-base: 18px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-xxl: 28px;
+  
+  /* 间距 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+}
+
+/* 基础样式重置 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  background-color: var(--bg-color);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* 链接样式 */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+/* 按钮增强 */
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* 表单元素增强 */
+input, textarea, select {
+  font-family: inherit;
+  font-size: var(--font-size-base);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-disabled);
+}
+
+/* 卡片样式 */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  transition: box-shadow 0.3s;
+}
+
+.card:hover {
+  box-shadow: var(--box-shadow-lg);
+}
+
+/* 标题样式 */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: var(--font-size-xxl);
+}
+
+h2 {
+  font-size: var(--font-size-xl);
+}
+
+h3 {
+  font-size: var(--font-size-lg);
+}
+
+h4 {
+  font-size: var(--font-size-base);
+}
+
+/* 容器样式 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+/* 布局工具类 */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 间距工具类 */
+.mt-1 { margin-top: var(--spacing-xs); }
+.mt-2 { margin-top: var(--spacing-sm); }
+.mt-3 { margin-top: var(--spacing-md); }
+.mt-4 { margin-top: var(--spacing-lg); }
+.mt-5 { margin-top: var(--spacing-xl); }
+
+.mb-1 { margin-bottom: var(--spacing-xs); }
+.mb-2 { margin-bottom: var(--spacing-sm); }
+.mb-3 { margin-bottom: var(--spacing-md); }
+.mb-4 { margin-bottom: var(--spacing-lg); }
+.mb-5 { margin-bottom: var(--spacing-xl); }
+
+.p-1 { padding: var(--spacing-xs); }
+.p-2 { padding: var(--spacing-sm); }
+.p-3 { padding: var(--spacing-md); }
+.p-4 { padding: var(--spacing-lg); }
+.p-5 { padding: var(--spacing-xl); }
+
+/* 文本工具类 */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+
+.text-primary { color: var(--primary-color); }
+.text-success { color: var(--success-color); }
+.text-warning { color: var(--warning-color); }
+.text-danger { color: var(--danger-color); }
+.text-info { color: var(--info-color); }
+
+.text-bold { font-weight: 600; }
+.text-light { font-weight: 300; }
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--border-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-disabled);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* 打印样式 */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
+    font-size: 14px;
+  }
+  
+  .card {
+    box-shadow: none;
+    border: 1px solid var(--border-color);
+  }
+}
+
+/* 紧急情况样式 */
+.emergency {
+  background: linear-gradient(135deg, #ff4d4f 0%, #ff7875 100%);
+  color: white;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+/* 高亮提醒 */
+.highlight {
+  background-color: #fffbe6;
+  border-left: 4px solid #faad14;
+  padding: var(--spacing-md);
+  margin: var(--spacing-md) 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  :root {
+    --font-size-base: 16px;
+    --font-size-lg: 18px;
+    --font-size-xl: 20px;
+    --font-size-xxl: 22px;
+  }
+  
+  .container {
+    padding: var(--spacing-md);
+  }
+  
+  .card {
+    padding: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-size-base: 16px;
+    --font-size-lg: 18px;
+    --font-size-xl: 20px;
+    --font-size-xxl: 20px;
+  }
+}
+
+/* ===== 移动端 Element Plus 适配 ===== */
+@media (max-width: 768px) {
+  /* 表格横向滚动 */
+  .el-table {
+    font-size: 14px !important;
+  }
+  .el-table__cell {
+    padding: 8px 4px !important;
+  }
+
+  /* 表单紧凑 */
+  .el-form-item {
+    margin-bottom: 14px !important;
+  }
+  .el-form-item__label {
+    font-size: 14px !important;
+  }
+
+  /* 弹窗全屏化 */
+  .el-dialog {
+    width: 95vw !important;
+    margin: auto !important;
+  }
+
+  /* 按钮字体 */
+  .el-button {
+    font-size: 15px !important;
+  }
+
+  /* 分页紧凑 */
+  .el-pagination {
+    font-size: 13px !important;
+  }
+  .el-pagination .el-pager li {
+    min-width: 28px !important;
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* 卡片内间距缩小 */
+  .section-card,
+  .card {
+    padding: 14px !important;
+    border-radius: 8px !important;
+  }
+
+  /* 按钮全宽（在特定上下文） */
+  .action-full-width .el-button {
+    width: 100% !important;
+    margin-bottom: 8px;
+  }
+
+  /* 输入框字体 */
+  .el-input__inner,
+  .el-textarea__inner {
+    font-size: 16px !important;
+  }
+
+  /* select 下拉选项 */
+  .el-select-dropdown__item {
+    font-size: 15px !important;
+    padding: 10px 16px !important;
+  }
+}
