@@ -50,6 +50,18 @@ app.use('/api/medication', medicationRoutes);
 app.use('/api/health', healthRoutes);
 app.use('/api/admin', adminRoutes);
 
+// API 根路径 - 服务信息
+app.get('/', (req, res) => {
+  res.json({
+    name: '银发数字化·智慧养老平台 API',
+    version: '1.0.0',
+    status: 'running',
+    docs: '/api-docs',
+    health: '/health',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // 健康检查端点
 app.get('/health', (req, res) => {
   res.json({ 
