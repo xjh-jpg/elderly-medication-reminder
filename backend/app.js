@@ -157,24 +157,12 @@ app.use((req, res) => {
   });
 });
 
-// 启动服务器
-app.listen(PORT, () => {
-  console.log(`
-  ============================================
-  银发数字化·智慧养老平台 API 服务器启动成功！
-  ============================================
-  服务地址: http://localhost:${PORT}
-  健康检查: http://localhost:${PORT}/health
-  API文档: http://localhost:${PORT}/api-docs
-
-  数据库配置:
-  - 主机: ${process.env.DB_HOST}
-  - 端口: ${process.env.DB_PORT}
-  - 数据库: ${process.env.DB_NAME}
-
-  启动时间: ${new Date().toISOString()}
-  ============================================
-  `);
+// 启动服务器 - 绑定 0.0.0.0 确保 Railway 等云平台可访问
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`银发数字化·智慧养老平台 API 服务器启动成功，端口: ${PORT}`);
+  console.log(`健康检查: http://0.0.0.0:${PORT}/health`);
+  console.log(`API文档: http://0.0.0.0:${PORT}/api-docs`);
+  console.log(`数据库: ${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`);
 });
 
 module.exports = app;
