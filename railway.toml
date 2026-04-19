@@ -1,18 +1,9 @@
 [build]
-# 使用 NIXPACKS 自动构建 Node.js 项目
 builder = "NIXPACKS"
 
 [deploy]
-# 启动命令：进入 backend 目录后启动服务
 startCommand = "cd backend && npm start"
 
-[railway]
-# 显式指定服务根目录
-# 注意：此值需要与 Railway 后台的 Root Directory 设置保持一致
-# 如果 Railway UI 已设置，此处可省略
-# root = "backend"
-
-# 环境变量
 [railway.variables]
 NODE_ENV = "production"
 PORT = "3000"
